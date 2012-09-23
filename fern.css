@@ -3,21 +3,31 @@ body {
 	padding: 0px;
 }
 
+#myCanvas {
+	margin: 0;
+}
+
 #wrapper {
 	position: relative;
 	border: 1px solid #9C9898;
 }
 
 #buttonWrapper {
-	position: absolute;
-	width: 30px;
-	top: 2px;
-	right: 2px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	float: left;
 }
 
 input[type ="button"] {
-	padding: 5px;
-	width: 30px;
-	margin: 0px 0px 2px 0px;
+	padding: 10px;
+	width: 60px;
+	height: 60px;
+	margin: 10px;
+	float: left;
+}
+
+div.clear {
+	clear: both;
 }
 

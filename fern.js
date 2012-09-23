@@ -1,64 +1,112 @@
-      $(document).ready(function() {
+function colorPixel(pixelArray, x, y, r, g, b, a){
+	index = (x + y * pixelArray.width) * 4;	
+	pixelArray.data[index + 0] = r;
+	pixelArray.data[index + 1] = g;
+	pixelArray.data[index + 2] = b;
+	pixelArray.data[index + 3] = a;
+}
+
+$(document).ready(function() {
+
+function draw(scale, translatePos){
+	var canvas = document.getElementById("myCanvas");
+  var context = canvas.getContext("2d");
 
 
-				// Get the canvas and 2d context
-        var canvas = document.getElementById('canvas');
-        var c = canvas.getContext('2d');
+	// Create an array representing the pixels on the canvas.
+	// To access a pixel: [(x + y * canvas width) * 4]
+	// + 0 = r color value
+	// + 1 = g color value
+	// + 2 = b color value
+	// + 3 = alpha value (opacity)
+	pixelArray = context.createImageData(canvas.width, canvas.height);
 
-				// Set the canvas width to match the size of the window
-				canvas.width = 10000; //window.innerWidth * .98 ;
-				canvas.height = 10000; // window.innerHeight * .98;
+	// Set a starting point and generate a random number between 0 and 100
+	var last_x = 0;
+	var last_y = 0;
+	var x = 0;
+	var y = 0;
 
-				// Create an array representing the pixels on the canvas.
-				// To access a pixel: [(x + y * canvas width) * 4]
-				// + 0 = r color value
-				// + 1 = g color value
-				// + 2 = b color value
-				// + 3 = alpha value (opacity)
-				pixelArray = c.createImageData(canvas.width, canvas.height);
+	for(var i = 0; i < 100000; i++){
+		r = Math.random() * 100;
+  	if (r <= 1){
+  		x = 0;  
+  		y = 0.16 * last_y;
+  	}
+  	else if (r <= 7) {
+  		x = 0.2 * last_x - 0.26 * last_y;
+			y = 0.23 * last_x + 0.22 * last_y + 1.6
+  	}
+  	else if (r <= 14) {
+  		x = -0.15 * last_x + 0.28 * last_y;
+			y = 0.26 * last_x + 0.24 * last_y + 0.44
+  	}
+  	else {
+  		x = 0.85 * last_x + 0.04 * last_y;
+  		y = -0.04 * last_x + 0.85 * last_y + 1.6;
+  	}
+		//console.log(x + " " + y);
+		var real_x = Math.floor(x * (100 * scale)) + translatePos.x;
+		var real_y  = Math.floor(y * 100 * scale) + translatePos.y - canvas.height / 2;
+		if(real_x < canvas.width && real_y < canvas.height && real_x > 0 && real_y > 0) {
+			colorPixel(pixelArray, real_x, real_y, 0, 128, 0, 255);
+		}
+		last_x = x;
+		last_y = y;
+	}
 
+	context.putImageData(pixelArray, 0, 0);
+} //end draw()
 
-				function colorPixel(pixelArray, x, y, r, g, b, a){
-					index = (x + y * pixelArray.width) * 4;	
-					pixelArray.data[index + 0] = r;
-					pixelArray.data[index + 1] = g;
-					pixelArray.data[index + 2] = b;
-					pixelArray.data[index + 3] = a;
-				}
+var canvas = document.getElementById("myCanvas");
 
+var translatePos = {
+x: canvas.width / 2,
+y: canvas.height / 2
+};
 
-				// Set a starting point and generate a random number between 0 and 100
-				var last_x = 0;
-				var last_y = 0;
-				var x = 0;
-				var y = 0;
+var scale = 1.0;
+var scaleMultiplier = 0.8;
+var startDragOffset = {};
+var mouseDown = false;
 
-				for(var i = 0; i < 10000000; i++){
+// add button event listeners
+document.getElementById("plus").addEventListener("click", function(){
+		scale /= scaleMultiplier;
+		draw(scale, translatePos);
+}, false);
 
-					r = Math.random() * 100;
-  				if (r <= 1){
-  					x = 0;  
-  					y = 0.16 * last_y;
-  				}
-  				else if (r <= 7) {
-  					x = 0.2 * last_x - 0.26 * last_y;
-						y = 0.23 * last_x + 0.22 * last_y + 1.6
-  				}
-  				else if (r <= 14) {
-  					x = -0.15 * last_x + 0.28 * last_y;
-						y = 0.26 * last_x + 0.24 * last_y + 0.44
-  				}
-  				else {
-  					x = 0.85 * last_x + 0.04 * last_y;
-  					y = -0.04 * last_x + 0.85 * last_y + 1.6;
-  				}
-					//console.log(x + " " + y);
-					colorPixel(pixelArray, Math.floor(x * 1000 + canvas.width / 2), Math.floor(y * 1000), 0, 0, 0, 255);
-					last_x = x;
-					last_y = y;
+document.getElementById("minus").addEventListener("click", function(){
+		scale *= scaleMultiplier;
+		draw(scale, translatePos);
+}, false);
 
-				}
+// add event listeners to handle screen drag
+canvas.addEventListener("mousedown", function(evt){
+		mouseDown = true;
+		startDragOffset.x = evt.clientX - translatePos.x;
+		startDragOffset.y = evt.clientY - translatePos.y;
+});
 
-				c.putImageData(pixelArray, 0, 0);
+canvas.addEventListener("mouseup", function(evt){
+		mouseDown = false;
+});
 
-      });
+canvas.addEventListener("mouseover", function(evt){
+		mouseDown = false;
+});
+
+canvas.addEventListener("mouseout", function(evt){
+		mouseDown = false;
+});
+
+canvas.addEventListener("mousemove", function(evt){
+		if (mouseDown) {
+				translatePos.x = evt.clientX - startDragOffset.x;
+				translatePos.y = evt.clientY - startDragOffset.y;
+				draw(scale, translatePos);
+		}
+});
+
+draw(scale, translatePos);
+});

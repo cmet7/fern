@@ -10,5 +10,5 @@ Using HTML 5 Canvas and Javascript
 Demo
 ----
 A demonstration of this code is available [here](http://www.tinylinx.com/fern).
-=======
-[Wikipedia](http://en.wikipedia.org/wiki/Barnsley_fern)
+
+Click and drag the canvas to move the fern. Use + and - buttons to zoom.

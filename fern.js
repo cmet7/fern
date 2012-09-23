@@ -6,8 +6,8 @@
         var c = canvas.getContext('2d');
 
 				// Set the canvas width to match the size of the window
-				canvas.width = window.innerWidth * .98 ;
-				canvas.height = window.innerHeight * .98;
+				canvas.width = 10000; //window.innerWidth * .98 ;
+				canvas.height = 10000; // window.innerHeight * .98;
 
 				// Create an array representing the pixels on the canvas.
 				// To access a pixel: [(x + y * canvas width) * 4]
@@ -53,11 +53,11 @@
   					y = -0.04 * last_x + 0.85 * last_y + 1.6;
   				}
 					//console.log(x + " " + y);
-					colorPixel(pixelArray, Math.floor(x * 800 + canvas.width / 2), Math.floor(y * 800), 0, 0, 0, 255);
+					colorPixel(pixelArray, Math.floor(x * 1000 + canvas.width / 2), Math.floor(y * 1000), 0, 0, 0, 255);
 					last_x = x;
 					last_y = y;
-				}
 
+				}
 
 				c.putImageData(pixelArray, 0, 0);
 

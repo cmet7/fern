@@ -4,6 +4,7 @@ Using HTML 5 Canvas and Javascript
 ----------------------------------
 
 > The Barnsley Fern is a fractal named after the British mathematician Michael Barnsley who first described it in his book Fractals Everywhere. He made it to resemble the Black Spleenwort, Asplenium adiantum-nigrum.
+<<<<<<< HEAD
 
 [Wikipedia](http://en.wikipedia.org/wiki/Barnsley_fern)
 
@@ -12,3 +13,4 @@ Demo
 A demonstration of this code is available [here](http://www.tinylinx.com/fern).
 =======
 [Wikipedia](http://en.wikipedia.org/wiki/Barnsley_fern)
+>>>>>>> 8794fcb2b1176abbda9ed039e99253cbc685e646

@@ -97,7 +97,7 @@ function draw(scale, translatePos){
 			y: canvas.height / 2
 	};
 
-var scale = 0.2;
+var scale = 0.9;
 var scaleMultiplier = 0.8;
 var startDragOffset = {};
 var mouseDown = false;

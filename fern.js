@@ -8,7 +8,7 @@ function colorPixel(pixelArray, x, y, r, g, b, a){
 
 $(document).ready(function() {
 
-var points = 800000;
+var points = 1000000;
 
 function setArray(){
 	var canvas = document.getElementById("myCanvas");
@@ -28,11 +28,11 @@ function setArray(){
   		x = 0;  
   		y = 0.16 * last_y;
   	}
-  	else if (r <= 7) {
+  	else if (r <= 8) {
   		x = 0.2 * last_x - 0.26 * last_y;
 			y = 0.23 * last_x + 0.22 * last_y + 1.6
   	}
-  	else if (r <= 14) {
+  	else if (r <= 15) {
   		x = -0.15 * last_x + 0.28 * last_y;
 			y = 0.26 * last_x + 0.24 * last_y + 0.44
   	}

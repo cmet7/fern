@@ -158,4 +158,7 @@ canvas.addEventListener("mousemove", function(evt){
 });
 
 draw(scale, translatePos);
+
+$("#buttonWrapper").draggable();
 });
+

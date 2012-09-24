@@ -14,9 +14,11 @@ body {
 
 #buttonWrapper {
 	position: fixed;
+	margin: 10px;
 	top: 0;
 	left: 0;
 	float: left;
+	background-color: rgba(255,255,255,0.8);
 }
 
 input[type ="button"] {
@@ -31,3 +33,13 @@ div.clear {
 	clear: both;
 }
 
+p.text {
+	font-size: 12px;
+	clear: both;
+	margin: 5px;
+	width: 200px;
+}
+
+p.instructions {
+	font-weight: bold;
+}

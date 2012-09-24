@@ -9,9 +9,14 @@ Implementation
 --------------
 HTML 5 Canvas
 Javascript
+500,000 pixels
 
 Demo
 ----
 A demonstration of this code is available [here](http://www.tinylinx.com/fern).
 
 Click and drag the canvas to move the fern. Use + and - buttons to zoom.
+
+Known Issues
+------------
++ Zooming in and out is slightly unpredictable. Using the mouse to zoom is disabled for the time being.

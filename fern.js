@@ -87,8 +87,6 @@ function draw(scale, translatePos){
 	var x = 0;
 	var y = 0;
 
-	console.log(translatePos);
-
 	for(var i = 0; i < points; i++){
 		x = valuesArray[i*2];
 		y = valuesArray[i*2 + 1];
@@ -107,11 +105,11 @@ function draw(scale, translatePos){
 var canvas = document.getElementById("myCanvas");
 
 var translatePos = {
-	x: canvas.width / 2,
-	y: 0
+	x: 400,
+	y: -900
 };
 
-var scale = canvas.height / 1080;
+var scale = 3;
 var scaleMultiplier = 0.8;
 var startDragOffset = {};
 var mouseDown = false;

@@ -160,5 +160,10 @@ canvas.addEventListener("mousemove", function(evt){
 draw(scale, translatePos);
 
 $("#buttonWrapper").draggable();
+$(window).resize(	function(){ 
+	sizeCanvas(); 
+	draw(scale, translatePos);
+});
+
 });
 

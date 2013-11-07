@@ -20,3 +20,7 @@ Click and drag the canvas to move the fern. Use + and - buttons to zoom.
 Known Issues
 ------------
 + Zooming in and out is slightly unpredictable. Using the mouse to zoom is disabled for the time being.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/chrismetcalfe/fern/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
